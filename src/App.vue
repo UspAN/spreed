@@ -21,106 +21,11 @@
 
 <template>
 	<div class="wrapper">
-		<p class="section-title">
-			Icon only
-		</p>
-		<div class="section">
-			<p class="button-type">
-				Text button
-			</p>
-			<p class="button-type">
-				Outlined button
-			</p>
-			<p class="button-type">
-				Contained button
-			</p>
-			<Button type="text">
-				<MicrophoneOff
-					:size="16"
-					decorative />
-			</Button>
-			<Button type="outlined">
-				<MicrophoneOff
-					:size="16"
-					decorative />
-			</Button>
-			<Button type="contained">
-				<MicrophoneOff
-					:size="16"
-					decorative />
-			</Button>
-			<Button color="primary" type="text">
-				<MicrophoneOff
-					:size="16"
-					decorative />
-			</Button>
-			<div />
-			<Button color="primary" type="contained">
-				<MicrophoneOff
-					:size="16"
-					decorative />
-			</Button>
-		</div>
-		<p class="section-title">
-			Text only
-		</p>
-		<div class="section">
-			<p class="button-type">
-				Text button
-			</p>
-			<p class="button-type">
-				Outlined button
-			</p>
-			<p class="button-type">
-				Contained button
-			</p>
-			<Button text="Microphone off" type="text" />
-			<Button text="Microphone off" type="outlined" />
-			<Button text="Microphone off" type="contained" />
-			<Button color="primary" text="Microphone off" type="text" />
-			<div />
-			<Button color="primary" text="Microphone off" type="contained" />
-		</div>
-		<p class="section-title">
-			Icon and text
-		</p>
-		<div class="section">
-			<p class="button-type">
-				Text button
-			</p>
-			<p class="button-type">
-				Outlined button
-			</p>
-			<p class="button-type">
-				Contained button
-			</p>
-			<Button text="Microphone off" type="text">
-				<MicrophoneOff
-					:size="16"
-					decorative />
-			</Button>
-			<Button text="Microphone off" type="outlined">
-				<MicrophoneOff
-					:size="16"
-					decorative />
-			</Button>
-			<Button text="Microphone off" type="contained">
-				<MicrophoneOff
-					:size="16"
-					decorative />
-			</Button>
-			<Button text="Microphone off" color="primary" type="text">
-				<MicrophoneOff
-					:size="16"
-					decorative />
-			</Button>
-			<div />
-			<Button text="Microphone off" color="primary" type="contained">
-				<MicrophoneOff
-					:size="16"
-					decorative />
-			</Button>
-		</div>
+		<Button text="Microphone off" color="primary" type="contained">
+			<MicrophoneOff
+				:size="16"
+				decorative />
+		</Button>
 	</div>
 </template>
 
