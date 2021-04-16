@@ -39,8 +39,15 @@
 				ref="scroller"
 				class="left-sidebar__list"
 				@scroll="debounceHandleScroll">
-				<Caption v-if="isSearching"
-					:title="t('spreed', 'Conversations')" />
+				<AppNavigationCaption v-if="isSearching"
+					:title="t('spreed', 'Conversations')">
+					<Actions slot="actions">
+						<ActionButton
+							icon="icon-add"
+							:close-after-click="true"
+							@click.stop="handleAbortReply" />
+					</Actions>
+				</AppNavigationCaption>
 				<li role="presentation">
 					<ConversationsList
 						ref="conversationsList"
@@ -62,7 +69,7 @@
 							@click="joinListedConversation(item)" />
 					</template>
 					<template v-if="searchResultsUsers.length !== 0">
-						<Caption
+						<AppNavigationCaption
 							:title="t('spreed', 'Users')" />
 						<li v-if="searchResultsUsers.length !== 0" role="presentation">
 							<ConversationsOptionsList
@@ -71,7 +78,7 @@
 						</li>
 					</template>
 					<template v-if="!showStartConversationsOptions">
-						<Caption v-if="searchResultsUsers.length === 0"
+						<AppNavigationCaption v-if="searchResultsUsers.length === 0"
 							:title="t('spreed', 'Users')" />
 						<Hint v-if="contactsLoading" :hint="t('spreed', 'Loading')" />
 						<Hint v-else :hint="t('spreed', 'No search results')" />
@@ -79,7 +86,7 @@
 				</template>
 				<template v-if="showStartConversationsOptions">
 					<template v-if="searchResultsGroups.length !== 0">
-						<Caption
+						<AppNavigationCaption
 							:title="t('spreed', 'Groups')" />
 						<li v-if="searchResultsGroups.length !== 0" role="presentation">
 							<ConversationsOptionsList
@@ -89,7 +96,7 @@
 					</template>
 
 					<template v-if="searchResultsCircles.length !== 0">
-						<Caption
+						<AppNavigationCaption
 							:title="t('spreed', 'Circles')" />
 						<li v-if="searchResultsCircles.length !== 0" role="presentation">
 							<ConversationsOptionsList
@@ -98,7 +105,7 @@
 						</li>
 					</template>
 
-					<Caption v-if="sourcesWithoutResults"
+					<AppNavigationCaption v-if="sourcesWithoutResults"
 						:title="sourcesWithoutResultsList" />
 					<Hint v-if="contactsLoading" :hint="t('spreed', 'Loading')" />
 					<Hint v-else :hint="t('spreed', 'No search results')" />
@@ -121,7 +128,7 @@
 <script>
 import CancelableRequest from '../../utils/cancelableRequest'
 import AppNavigation from '@nextcloud/vue/dist/Components/AppNavigation'
-import Caption from '../Caption'
+import AppNavigationCaption from '@nextcloud/vue/dist/Components/AppNavigationCaption'
 import ConversationsList from './ConversationsList/ConversationsList'
 import Conversation from './ConversationsList/Conversation'
 import ConversationsOptionsList from '../ConversationsOptionsList'
@@ -142,19 +149,24 @@ import arrowNavigation from '../../mixins/arrowNavigation'
 import { showError } from '@nextcloud/dialogs'
 import { emit } from '@nextcloud/event-bus'
 
+import Actions from '@nextcloud/vue/dist/Components/Actions'
+import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
+
 export default {
 
 	name: 'LeftSidebar',
 
 	components: {
 		AppNavigation,
-		Caption,
+		AppNavigationCaption,
 		ConversationsList,
 		ConversationsOptionsList,
 		Hint,
 		SearchBox,
 		NewGroupConversation,
 		Conversation,
+		Actions,
+		ActionButton,
 	},
 
 	mixins: [
